@@ -14,6 +14,19 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe()); // class-validator 를 전역으로 적용
   app.useGlobalFilters(new HttpExceptionFilter());
 
+  // if (configService.get<string>('NODE_ENV') === 'dev') {
+  //   app.enableCors();
+  // } else {
+  // app.enableCors({
+  //   origin: ['https://첼시특별시.com'],
+  //   credentials: true,
+  // });
+  // }
+  app.enableCors({
+    origin: true, // true: 전체 허용 / 개발이 끝나면 어떤 특정 url 에서 접근이 가능할지 써주어야 함
+    credentials: true,
+  });
+
   const config = new DocumentBuilder()
     .setTitle('C.I.C')
     .setDescription('chelsea-special-city')
