@@ -22,7 +22,7 @@ export class UserRepository extends Repository<User> {
     });
 
     try {
-      await this.save(user);
+      return await this.save(user);
     } catch (error) {
       if (error.code === '23505') {
         throw new ConflictException('이미 존재하는 이메일입니다');
@@ -31,5 +31,13 @@ export class UserRepository extends Repository<User> {
         throw new InternalServerErrorException();
       }
     }
+  }
+
+  async findUserByEmail(email: string) {
+    const user = await this.findOne({
+      where: { email },
+    });
+
+    return user;
   }
 }
