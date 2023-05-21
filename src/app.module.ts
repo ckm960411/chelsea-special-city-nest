@@ -19,7 +19,7 @@ import { AuthModule } from './auth/auth.module';
         database: configService.get<string>('DB_DATABASE'),
         password: configService.get<string>('DB_PASSWORD'),
         entities: [__dirname + '/**/*.entity.{js,ts}'],
-        synchronize: process.env.NODE === 'env', // 개발환경에선 true, production 에선 false
+        synchronize: true, // 개발환경에선 true, production 에선 false
       }),
       inject: [ConfigService],
     }),
