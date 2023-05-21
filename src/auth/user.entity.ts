@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 import { BaseEntityWithTimestamp } from 'src/common/Entities/base-entity-timestamp.entity';
 import { Column, Entity, Unique } from 'typeorm';
 import { UserStatus } from './enum/user-status.enum';
@@ -21,7 +21,7 @@ export class User extends BaseEntityWithTimestamp {
     description: 'email',
     required: true,
   })
-  @IsString()
+  @IsEmail()
   @IsNotEmpty()
   @Column('text', { unique: true })
   email: string;
