@@ -9,6 +9,7 @@ import { PlayersModule } from './players/players.module';
 import { CommentsModule } from './comments/comments.module';
 import { StatsModule } from './stats/stats.module';
 import { AwsModule } from './aws/aws.module';
+import { PhotosModule } from './photos/photos.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { AwsModule } from './aws/aws.module';
     CommentsModule,
     StatsModule,
     AwsModule,
+    PhotosModule,
   ],
   controllers: [AppController],
   providers: [AppService, ConfigService],
