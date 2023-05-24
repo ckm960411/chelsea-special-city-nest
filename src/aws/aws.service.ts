@@ -15,4 +15,15 @@ export class AwsService {
       secretAccessKey: this.configService.get('AWS_SECRET_KEY'),
     });
   }
+
+  async createPresigned(key: string) {
+    return this.s3.createPresignedPost({
+      Bucket: this.bucketName,
+      Fields: { key },
+      Conditions: [
+        ['content-length-range', 0, 50 * 1000 * 1000],
+        ['starts-with', '$Content-Type', 'image/'],
+      ],
+    });
+  }
 }
