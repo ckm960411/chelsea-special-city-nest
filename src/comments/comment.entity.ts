@@ -1,4 +1,4 @@
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 import { User } from 'src/auth/user.entity';
 import { Player } from 'src/players/player.entity';
 import {
@@ -31,13 +31,11 @@ export class Comment extends BaseEntity {
   @IsString()
   content: string;
 
-  @IsNumber()
-  @ManyToOne(() => Player, (player) => player)
+  @ManyToOne(() => Player, (player) => player.comments)
   @JoinColumn()
   player: Player;
 
-  @IsNumber()
-  @ManyToOne(() => User, (user) => user)
+  @ManyToOne(() => User, (user) => user.comments)
   @JoinColumn()
   user: User;
 }

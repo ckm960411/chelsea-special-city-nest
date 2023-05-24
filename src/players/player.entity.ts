@@ -1,7 +1,14 @@
 import { IsDateString, IsNumber, IsString } from 'class-validator';
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Position } from './enum';
 import { ApiProperty } from '@nestjs/swagger';
+import { Comment } from 'src/comments/comment.entity';
 
 @Entity()
 export class Player extends BaseEntity {
@@ -87,4 +94,7 @@ export class Player extends BaseEntity {
   @IsNumber()
   @Column()
   height: number;
+
+  @OneToMany(() => Comment, (comment) => comment.player)
+  comments: Comment[];
 }
