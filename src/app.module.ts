@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { PlayersModule } from './players/players.module';
 import { CommentsModule } from './comments/comments.module';
 import { StatsModule } from './stats/stats.module';
+import { AwsModule } from './aws/aws.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { StatsModule } from './stats/stats.module';
     PlayersModule,
     CommentsModule,
     StatsModule,
+    AwsModule,
   ],
   controllers: [AppController],
   providers: [AppService, ConfigService],
