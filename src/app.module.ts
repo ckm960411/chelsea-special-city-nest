@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { PlayersModule } from './players/players.module';
 import { CommentsModule } from './comments/comments.module';
+import { StatsModule } from './stats/stats.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { CommentsModule } from './comments/comments.module';
     AuthModule,
     PlayersModule,
     CommentsModule,
+    StatsModule,
   ],
   controllers: [AppController],
   providers: [AppService, ConfigService],
