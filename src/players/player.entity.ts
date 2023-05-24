@@ -9,6 +9,7 @@ import {
 import { Position } from './enum';
 import { ApiProperty } from '@nestjs/swagger';
 import { Comment } from 'src/comments/comment.entity';
+import { Stat } from 'src/stats/stat.entity';
 
 @Entity()
 export class Player extends BaseEntity {
@@ -97,4 +98,7 @@ export class Player extends BaseEntity {
 
   @OneToMany(() => Comment, (comment) => comment.player)
   comments: Comment[];
+
+  @OneToMany(() => Stat, (stat) => stat.player)
+  stats: Stat[];
 }
